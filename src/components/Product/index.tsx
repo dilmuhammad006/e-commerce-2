@@ -18,7 +18,16 @@ const ProductComponent = ({
   const basket = useSelector((state: RootState) => state.basket);
   const handleBasket = () => {
     dispatch(
-      addBasket({ isActive, name, price, stock, id, category, createdAt })
+      addBasket({
+        isActive,
+        name,
+        price,
+        stock,
+        id,
+        category,
+        createdAt,
+        count: 1,
+      })
     );
   };
   return (

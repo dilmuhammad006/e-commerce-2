@@ -6,3 +6,4 @@ export { default as ProfilePage } from './Profile';
 export { default as ProductDetailsPage } from './ProductDetailsPage';
 export { default as BasketPage } from './Basket';
 export { default as OrdersPage } from './Order';
+export { default as DashboardPage } from './Dashboard';

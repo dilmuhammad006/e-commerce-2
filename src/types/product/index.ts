@@ -46,7 +46,7 @@ export interface ApiResponse {
 export interface ProductPagigationAndSortingProps {
   page?: number;
   size?: number;
-  sortBy?: Product;
+  sortBy?: 'id' | 'price' | 'createdAt';
   sortDir?: 'asc' | 'desc';
 }
 export interface OneProductResponse {

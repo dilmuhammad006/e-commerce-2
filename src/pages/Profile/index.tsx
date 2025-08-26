@@ -1,35 +1,36 @@
 import { useSelector } from 'react-redux';
-import cls from './Profile.module.css';
 import type { RootState } from '../../redux';
 import { NavLink, useNavigate } from 'react-router';
+import { useEffect } from 'react';
+import cls from './Profile.module.css';
+
 const ProfilePage = () => {
   const { user, isAuthenticated } = useSelector(
     (state: RootState) => state.authenticate
   );
   const navigate = useNavigate();
 
-  if (!isAuthenticated) {
-    navigate('/auth/login');
-  }
+  useEffect(() => {
+    if (!isAuthenticated) {
+      navigate('/auth/login');
+    }
+  }, [isAuthenticated, navigate]);
+
   return (
-    <div className={cls['profile-wrapper']}>
-      <div className="container">
-        <img src="/avatar.avif" alt="default user image" />
-        <hr />
+    <div className={cls.wrapper}>
+      <div className={cls.card}>
+        <img src="/avatar.avif" alt="default user" className={cls.avatar} />
+        <h2 className={cls.username}>{user?.username}</h2>
         <p>
-          <b>Username: </b>
-          {user?.username}
+          <b>Email:</b> {user?.email}
         </p>
         <p>
-          <b>Email: </b> {user?.email}
+          <b>Role:</b> {user?.role}
         </p>
         <p>
-          <b>Role: </b> {user?.role}
-        </p>
-        <p>
-          <b>Adminlik huquqi: </b>{' '}
+          <b>Adminlik huquqi:</b>{' '}
           {user?.role === 'USER' ? (
-            <NavLink to={'/dashboard'}>Ha</NavLink>
+            <NavLink to="/dashboard">Ha</NavLink>
           ) : (
             "Yo'q"
           )}

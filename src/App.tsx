@@ -1,6 +1,7 @@
 import { Route, Routes } from 'react-router';
 import {
   BasketPage,
+  DashboardPage,
   HomePage,
   LoginPage,
   NotfoundPage,
@@ -20,6 +21,7 @@ const App = () => {
       <Route path="/profile" element={<ProfilePage />} />
       <Route path="/basket" element={<BasketPage />} />
       <Route path="/orders" element={<OrdersPage />} />
+      <Route path="/dashboard" element={<DashboardPage />} />
 
       <Route path="*" element={<NotfoundPage />} />
     </Routes>

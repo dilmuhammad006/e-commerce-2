@@ -1,6 +1,22 @@
-.not-found-wrapper {
-  font-size: 100px;
-  color: #555;
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: #f5f6fa;
   text-align: center;
-  margin-top: 100px;
+}
+
+.code {
+  font-size: 150px;
+  font-weight: bold;
+  color: #145DA0;
+  margin: 0;
+}
+
+.message {
+  font-size: 20px;
+  color: #555;
+  margin-bottom: 20px;
 }

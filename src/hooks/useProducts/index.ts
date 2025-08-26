@@ -15,3 +15,4 @@ export const useGetOneProduct = (id: number | string) => {
     queryFn: () => getOneProduct(id),
   });
 };
+

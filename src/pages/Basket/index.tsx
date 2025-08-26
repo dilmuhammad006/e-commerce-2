@@ -10,9 +10,7 @@ import toast from 'react-hot-toast';
 import { clearBasket } from '../../redux/reducers';
 const BasketPage = () => {
   const basket = useSelector((state: RootState) => state.basket);
-  const totalPrice = basket.reduce((sum, product) => {
-    return sum + product.price * 1;
-  }, 0);
+  const totalPrice = basket.reduce((sum, p) => sum + p.price * p.count, 0);
 
   const { user, isAuthenticated } = useSelector(
     (state: RootState) => state.authenticate
@@ -29,7 +27,7 @@ const BasketPage = () => {
     customerName: user?.username || '',
     orderItems: basket.map((el) => ({
       productId: el.id,
-      quantity: 1,
+      quantity: el.count,
     })),
   };
 
@@ -63,7 +61,10 @@ const BasketPage = () => {
         </div>
         <div className={cls['total']}>
           <div className={cls['punkt']}>
-            <p>Topshirish punkitigacha yetkazib berish 15000,00 so'm</p>
+            <p>
+              Topshirish punkitigacha yetkazib berish{' '}
+              {totalPrice > 60000 ? 'bepul' : "15000,00 so'm"}
+            </p>
             <hr />
           </div>
           <div className={cls['total-price']}>
