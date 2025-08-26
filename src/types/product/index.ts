@@ -49,3 +49,8 @@ export interface ProductPagigationAndSortingProps {
   sortBy?: Product;
   sortDir?: 'asc' | 'desc';
 }
+export interface OneProductResponse {
+  success: boolean;
+  message: string;
+  data: Product;
+}

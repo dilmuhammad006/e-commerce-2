@@ -1,9 +1,16 @@
 import { useSelector } from 'react-redux';
 import cls from './Profile.module.css';
 import type { RootState } from '../../redux';
-import { NavLink } from 'react-router';
+import { NavLink, useNavigate } from 'react-router';
 const ProfilePage = () => {
-  const { user } = useSelector((state: RootState) => state.authenticate);
+  const { user, isAuthenticated } = useSelector(
+    (state: RootState) => state.authenticate
+  );
+  const navigate = useNavigate();
+
+  if (!isAuthenticated) {
+    navigate('/auth/login');
+  }
   return (
     <div className={cls['profile-wrapper']}>
       <div className="container">

@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import isAuthentificatedReducer from './reducers/auth';
+import basketReducer from './reducers/basket';
 
 const store = configureStore({
   reducer: {
     authenticate: isAuthentificatedReducer,
+    basket: basketReducer,
   },
 });
 

@@ -1,0 +1,50 @@
+.basket {
+  width: 100%;
+  border-radius: 8px;
+  padding: 16px 8px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  display: flex;
+
+  img:nth-child(1) {
+    width: 100px;
+    border-radius: 8px;
+  }
+}
+.info {
+  padding: 8px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  small {
+    font-weight: bold;
+    color: gray;
+    text-decoration: line-through;
+  }
+}
+.title {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 20px;
+  font-weight: bold;
+  color: #145da0;
+
+  img {
+    cursor: pointer;
+    background-color: #145da0;
+    padding: 4px;
+    border-radius: 4px;
+
+    &:hover {
+      transform: scale(1.02);
+    }
+  }
+}
+.price{
+    font-size: 25px;
+    font-weight: bold;
+    color: #145da0;
+}

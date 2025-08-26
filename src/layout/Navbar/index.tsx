@@ -14,12 +14,14 @@ const NavbarLayout = () => {
     const savedLang = localStorage.getItem('language') as Languages | null;
     return savedLang ? savedLang : Languages.uz;
   });
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const { isAuthenticated } = useSelector(
     (state: RootState) => state.authenticate
   );
+
   useEffect(() => {
     setLanguage(language);
   }, [language]);
@@ -29,49 +31,54 @@ const NavbarLayout = () => {
     toast.success('Muvaffaqiyatli tizimdan chiqish');
     setTimeout(() => {
       navigate('/auth/login');
-    }, 2000);
+    }, 1500);
   };
 
   return (
     <nav className={cls['nav']}>
       <div className="container" id={cls['nav-wrapper']}>
+        <h1 className={cls['logo']} onClick={() => navigate('/')}>
+          E-Commerce
+        </h1>
+
         <div className={cls['navigation']}>
-          <h1>E-Commerce</h1>
           <NavLink to="/">Home</NavLink>
+          <NavLink to="/basket">Basket</NavLink>
           <NavLink to="/orders">Orders</NavLink>
         </div>
 
         <div className={cls['profile']}>
-          <NavLink to="/profile">Profile</NavLink>/
           {isAuthenticated ? (
-            <span style={{ cursor: 'pointer' }} onClick={handleLogout}>
-              Logout
-            </span>
+            <>
+              <NavLink to="/profile">Profile</NavLink>
+              <span
+                style={{ cursor: 'pointer', fontWeight: 500 }}
+                onClick={handleLogout}
+              >
+                Logout
+              </span>
+            </>
           ) : (
             <NavLink to="/auth/login">Login</NavLink>
           )}
+
           <Select
             value={language}
             size="small"
             onChange={(e) => setLanguageState(e.target.value as Languages)}
             sx={{
-              minWidth: 10,
-              backgroundColor: 'white',
+              minWidth: 80,
               borderRadius: 2,
               color: 'white',
-              border: 'none',
-              background: 'transparent',
+              border: '1px solid #fff',
+              fontSize: '14px',
+              height: '32px',
+              '.MuiSvgIcon-root': { color: 'white' },
             }}
           >
-            <MenuItem value={Languages.uz} sx={{ color: '#145DA0' }}>
-              {Languages.uz}
-            </MenuItem>
-            <MenuItem value={Languages.eng} sx={{ color: '#145DA0' }}>
-              {Languages.eng}
-            </MenuItem>
-            <MenuItem value={Languages.ru} sx={{ color: '#145DA0' }}>
-              {Languages.ru}
-            </MenuItem>
+            <MenuItem value={Languages.uz}>{Languages.uz}</MenuItem>
+            <MenuItem value={Languages.eng}>{Languages.eng}</MenuItem>
+            <MenuItem value={Languages.ru}>{Languages.ru}</MenuItem>
           </Select>
         </div>
       </div>

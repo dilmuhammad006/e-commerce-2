@@ -21,7 +21,7 @@
   border-radius: 8px;
   letter-spacing: 2px;
 
-  &:hover{
+  &:hover {
     cursor: pointer;
     transform: scale(1.02);
   }
