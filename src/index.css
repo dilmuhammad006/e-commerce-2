@@ -1,10 +1,10 @@
 * {
   box-sizing: border-box;
   outline: none;
-}
-body {
   padding: 0;
   margin: 0;
+}
+body {
   font-family: Arial, Helvetica, sans-serif;
 }
 a {
@@ -15,4 +15,10 @@ a {
   padding: 16px;
   width: 100%;
   margin: 0 auto;
+}
+
+.text-center {
+  text-align: center;
+  font-size: 20px;
+  color: grey;
 }

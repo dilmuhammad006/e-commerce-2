@@ -1,0 +1,38 @@
+.product {
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  padding: 8px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  h3 {
+    color: #145da0;
+  }
+  small {
+    text-decoration: line-through;
+    opacity: 0.6;
+  }
+  h6 {
+    color: grey;
+  }
+  p {
+    font-size: large;
+    font-weight: bold;
+    color: #145da0;
+  }
+
+  img {
+    max-width: 100%;
+    height: 150px;
+    border-radius: 8px;
+
+    &:hover{
+        transform: scale(1.02);
+        opacity: 0.8;
+    }
+  }
+}
+.add-basket {
+  cursor: pointer;
+}

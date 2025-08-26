@@ -58,11 +58,20 @@ const NavbarLayout = () => {
               minWidth: 10,
               backgroundColor: 'white',
               borderRadius: 2,
+              color: 'white',
+              border: 'none',
+              background: 'transparent',
             }}
           >
-            <MenuItem value={Languages.uz}>{Languages.uz}</MenuItem>
-            <MenuItem value={Languages.eng}>{Languages.eng}</MenuItem>
-            <MenuItem value={Languages.ru}>{Languages.ru}</MenuItem>
+            <MenuItem value={Languages.uz} sx={{ color: '#145DA0' }}>
+              {Languages.uz}
+            </MenuItem>
+            <MenuItem value={Languages.eng} sx={{ color: '#145DA0' }}>
+              {Languages.eng}
+            </MenuItem>
+            <MenuItem value={Languages.ru} sx={{ color: '#145DA0' }}>
+              {Languages.ru}
+            </MenuItem>
           </Select>
         </div>
       </div>
