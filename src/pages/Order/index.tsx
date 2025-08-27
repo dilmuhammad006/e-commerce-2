@@ -9,7 +9,7 @@ const OrdersPage = () => {
   const { user, isAuthenticated } = useSelector(
     (state: RootState) => state.authenticate
   );
-  const navigate = useNavigate();
+  const navigate = useNavigate( );
 
   useEffect(() => {
     if (!isAuthenticated) {
