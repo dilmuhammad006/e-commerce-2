@@ -8,6 +8,7 @@ import { useCreateOrder } from '../../hooks';
 import { useNavigate } from 'react-router';
 import toast from 'react-hot-toast';
 import { clearBasket } from '../../redux/reducers';
+import { useEffect } from 'react';
 const BasketPage = () => {
   const basket = useSelector((state: RootState) => state.basket);
   const totalPrice = basket.reduce((sum, p) => sum + p.price * p.count, 0);
@@ -18,10 +19,12 @@ const BasketPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  if (!isAuthenticated) {
-    navigate('/auth/login');
-    return null;
-  }
+  useEffect(() => {
+    if (!isAuthenticated) {
+      navigate('/auth/login');
+    }
+  }, [isAuthenticated, navigate]);
+
   const request: OrderRequest = {
     customerEmail: user?.email || '',
     customerName: user?.username || '',

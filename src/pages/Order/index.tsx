@@ -4,15 +4,18 @@ import cls from './Order.module.css';
 import type { RootState } from '../../redux';
 import { useNavigate } from 'react-router';
 import { OrderComponent } from '../../components';
+import { useEffect } from 'react';
 const OrdersPage = () => {
   const { user, isAuthenticated } = useSelector(
     (state: RootState) => state.authenticate
   );
   const navigate = useNavigate();
 
-  if (!isAuthenticated) {
-    throw navigate('/auth/login');
-  }
+  useEffect(() => {
+    if (!isAuthenticated) {
+      navigate('/auth/login');
+    }
+  }, [isAuthenticated, navigate]);
   const { data, isLoading, isError } = useGetAllOrderByEmail(
     user?.email as string
   );
@@ -25,19 +28,14 @@ const OrdersPage = () => {
   }
   return (
     <div className="container">
-    <div className={cls['orders-wrapper']}>
-      {data?.data.map((el) =>
-        el.orderItems.map((order) => (
-          <OrderComponent
-            key={order.id}
-            order={order}
-            orderInfo={el} 
-          />
-        ))
-      )}
+      <div className={cls['orders-wrapper']}>
+        {data?.data.map((el) =>
+          el.orderItems.map((order) => (
+            <OrderComponent key={order.id} order={order} orderInfo={el} />
+          ))
+        )}
+      </div>
     </div>
-  </div>
-  
   );
 };
 
