@@ -29,8 +29,8 @@ const ProfilePage = () => {
         </p>
         <p>
           <b>Adminlik huquqi:</b>{' '}
-          {user?.role === 'USER' ? (
-            <NavLink to="/dashboard">Ha</NavLink>
+          {user?.role === 'ADMIN' ? (
+            <NavLink to="/dashboard">Ha {'-->'}</NavLink>
           ) : (
             "Yo'q"
           )}

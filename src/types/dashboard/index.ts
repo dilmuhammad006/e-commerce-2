@@ -3,7 +3,7 @@ export interface CreateProductRequest {
   price: number;
   stock: number;
   category: string;
-  isActive: string;
+  isActive: boolean;
 }
 
 export interface UpdateProductRequest extends Partial<CreateProductRequest> {

@@ -4,9 +4,12 @@ import updateImage from '../../assets/edit_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz2
 import type { Product } from '../../types/product';
 import { useDeleteProduct } from '../../hooks';
 import toast from 'react-hot-toast';
+import { useDispatch } from 'react-redux';
+import { handleChangeSelectedId, handleUdateModal } from '../../redux/reducers';
 
 const Tbody = (product: Product) => {
   const { mutate: del } = useDeleteProduct();
+  const dispatch = useDispatch();
 
   const handleDelete = () => {
     del(product.id, {
@@ -27,7 +30,12 @@ const Tbody = (product: Product) => {
       <TableCell>{new Date(product.createdAt).toLocaleDateString()}</TableCell>
       <TableCell>{product.stock}</TableCell>
       <TableCell>{product.isActive ? 'faol' : 'faol emas'}</TableCell>
-      <TableCell>
+      <TableCell
+        onClick={() => {
+          dispatch(handleUdateModal());
+          dispatch(handleChangeSelectedId(product.id));
+        }}
+      >
         <img src={updateImage} alt="Update button" />
       </TableCell>
       <TableCell onClick={handleDelete}>

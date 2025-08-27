@@ -1,0 +1,12 @@
+.form {
+  width: 100%;
+  padding: 24px 16px;
+  border-radius: 8px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  text-align: center;
+  color: #145da0;
+  background-color: #efeded
+}

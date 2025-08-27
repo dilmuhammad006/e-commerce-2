@@ -8,11 +8,16 @@ import {
 } from '@mui/material';
 import cls from './Dashboard.module.css';
 import { useGetAllProducts } from '../../hooks';
-import { Tbody } from '../../components';
-import { useSelector } from 'react-redux';
+import {
+  CreateProductModal,
+  Tbody,
+  UpdateProductModal,
+} from '../../components';
+import { useDispatch, useSelector } from 'react-redux';
 import type { RootState } from '../../redux';
 import { useNavigate } from 'react-router';
 import { useEffect } from 'react';
+import { handleCreateModal } from '../../redux/reducers';
 
 const DashboardPage = () => {
   const {
@@ -21,6 +26,10 @@ const DashboardPage = () => {
     isError,
   } = useGetAllProducts({ sortBy: 'createdAt' });
 
+  const { createModal, updateModal } = useSelector(
+    (state: RootState) => state.modal
+  );
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const { user } = useSelector((state: RootState) => state.authenticate);
   useEffect(() => {
@@ -36,10 +45,14 @@ const DashboardPage = () => {
   }
 
   return (
-    <div className="container">
+    <div className="container" id={cls['container']}>
       <div className={cls['title']}>
         <p>Mahsulotlar</p>
-        <Button type="button" variant="contained">
+        <Button
+          type="button"
+          variant="contained"
+          onClick={() => dispatch(handleCreateModal())}
+        >
           qo'shish
         </Button>
       </div>
@@ -63,6 +76,18 @@ const DashboardPage = () => {
             ))}
           </TableBody>
         </Table>
+      </div>
+      <div
+        className={cls['create-modal']}
+        id={!createModal ? cls['create-modal'] : undefined}
+      >
+        <CreateProductModal />
+      </div>
+      <div
+        className={cls['create-modal']}
+        id={!updateModal ? cls['update-modal'] : undefined}
+      >
+        <UpdateProductModal />
       </div>
     </div>
   );

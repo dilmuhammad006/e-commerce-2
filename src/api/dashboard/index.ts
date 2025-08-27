@@ -12,6 +12,7 @@ export const createProduct = async (props: CreateProductRequest) => {
 
 export const updateProduct = async (props: UpdateProductRequest) => {
   try {
+
     const { data } = await customAxios.post(`products/${props.id}`, props);
     return data;
   } catch (error) {
